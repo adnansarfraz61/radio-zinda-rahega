@@ -90,7 +90,7 @@
   $('zoomBtn').onclick=()=>{ zoom=!zoom; document.querySelector('.book-wrap').style.width=zoom?'min(1600px,100vw)':'min(96vw,1280px)'; document.querySelectorAll('.page-card img').forEach(i=>i.style.maxHeight=zoom?'none':'calc(100vh - 155px)'); };
   $('fsBtn').onclick=()=>{ const el=document.documentElement; if(!document.fullscreenElement) el.requestFullscreen?.(); else document.exitFullscreen?.(); };
   document.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft') next(); if(e.key==='ArrowRight') prev(); if(e.key==='Home') first(); if(e.key==='End') last(); });
-  let sx=0; document.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true}); document.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50){ dx<0?next():prev(); } },{passive:true});
+  let sx=0; document.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true}); document.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50){ dx<0?prev():next(); } },{passive:true});
   window.addEventListener('resize',()=>render(false));
   setTimeout(()=>loader.classList.add('hidden'),5000);
   render(false);
