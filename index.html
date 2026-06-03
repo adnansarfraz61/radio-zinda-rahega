@@ -34,7 +34,7 @@
     </div>
   </header>
   <main class="reader">
-    <p class="hint">یہ ریڈر اردو کتابوں کے لیے دائیں سے بائیں ترتیب میں بنایا گیا ہے۔ اگلا صفحہ پڑھنے کے لیے <b>اگلا صفحہ</b> دبائیں، کی بورڈ کے تیر استعمال کریں، یا موبائل پر سوائپ کریں۔</p>
+    <p class="hint">یہ ریڈر اردو کتابوں کے لیے دائیں سے بائیں ترتیب میں بنایا گیا ہے۔ اگلا صفحہ پڑھنے کے لیے <b>اگلا صفحہ</b> دبائیں، کی بورڈ کے تیر استعمال کریں، یا موبائل پر بائیں طرف سوائپ کریں۔</p>
     <div id="errorBox" class="error hidden"></div>
     <section class="book-wrap" id="bookWrap">
       <div class="spread" id="spread">
@@ -90,7 +90,7 @@
   $('zoomBtn').onclick=()=>{ zoom=!zoom; document.querySelector('.book-wrap').style.width=zoom?'min(1600px,100vw)':'min(96vw,1280px)'; document.querySelectorAll('.page-card img').forEach(i=>i.style.maxHeight=zoom?'none':'calc(100vh - 155px)'); };
   $('fsBtn').onclick=()=>{ const el=document.documentElement; if(!document.fullscreenElement) el.requestFullscreen?.(); else document.exitFullscreen?.(); };
   document.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft') next(); if(e.key==='ArrowRight') prev(); if(e.key==='Home') first(); if(e.key==='End') last(); });
-  let sx=0; document.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true}); document.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50){ dx<0?prev():next(); } },{passive:true});
+  let sx=0; document.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true}); document.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50){ dx<0?next():prev(); } },{passive:true});
   window.addEventListener('resize',()=>render(false));
   setTimeout(()=>loader.classList.add('hidden'),5000);
   render(false);
